@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <title>Cadastro de Funcionários</title>
+
+    <script>
+        
+        // Função para salvar o nome no localStorage
+        function salvarNome() {
+            let nome = document.getElementById("nomefun").value;
+            let cargo = document.getElementById("cargofun").value;
+
+            if (nome) {
+                localStorage.setItem("nomeUsuario", nome);
+                localStorage.setItem("nomeCargo", cargo);
+
+                mostrarNome();
+            }
+        }
+         // Função para exibir o nome salvo
+         function mostrarNome() {
+            let nomeSalvo = localStorage.getItem("nomeUsuario");
+            let cargoSalvo = localStorage.getItem("nomeCargo");
+
+            if (nomeSalvo || cargoSalvo) {
+                document.getElementById("nomeExibido").textContent = "Nome salvo: " + nomeSalvo;
+                document.getElementById("cargoExibido").textContent = "cargoSalvo: " + cargoSalvo;
+
+            } else {
+                document.getElementById("nomeExibido").textContent = "Nenhum nome salvo.";
+            }
+        }
+
+    </script>
+    
+    <h1>Cadastro de funcionários</h1>
+</head>
+<body>
+    <p>Nome do Funcionário</p>
+    <input type="text" id="nomefun" placeholder="Digite seu nome">
+
+    <p>Cargo</p>
+    <input type="text" id="cargofun" placeholder="Digite seu cargo">
+
+    <button onclick="salvarNome()">Registrar</button>
+
+    <p id="nomeExibido"></p>
+    <p id="cargoExibido"></p>
+
+
+
+  
+    
+</body>
+</html>
